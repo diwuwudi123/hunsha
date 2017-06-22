@@ -12,8 +12,11 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
+   .js('resources/assets/js/jquery.js', 'public/js')
+   .js('resources/assets/js/countUp.js', 'public/js')
+   .js('resources/assets/js/custom.js', 'public/js')
    .js('resources/assets/js/swiper.js', 'public/js')
+   .js('resources/assets/js/bootstrap.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css')
-   .combine([
-    'resources/assets/css/swiper.css',
-	], 'public/css/swiper.css');;
+   .combine(['resources/assets/css/swiper.css',], 'public/css/swiper.css')
+   .combine(['resources/assets/css/style.css','resources/assets/css/bootstrap.css', 'resources/assets/css/font-aswsome.css'], 'public/css/common.css');
