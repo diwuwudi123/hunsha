@@ -20,14 +20,6 @@ class IndexController extends Controller
 
     public function index()
     {
-        $route = Route::current();
-
-$name = Route::currentRouteName();
-
-$action = Route::currentRouteAction();
-    var_dump($route);
-    var_dump($name);
-    var_dump($action);die;
         for ($i=1; $i < 42; $i++) { 
             $images[] = "1 ({$i})" .'.jpg';
         }
