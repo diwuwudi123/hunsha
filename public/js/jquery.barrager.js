@@ -60,57 +60,106 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 45);
+/******/ 	return __webpack_require__(__webpack_require__.s = 50);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 45:
+/***/ 50:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(46);
+module.exports = __webpack_require__(51);
 
 
 /***/ }),
 
-/***/ 46:
+/***/ 51:
 /***/ (function(module, exports) {
 
-/*====================================
- Free To Use For Personal And Commercial Usage
-Author: #
- License: Open source - MIT
- Please visit http://opensource.org/licenses/MIT for more Full Deatils of license.
- Share Us if You Like our work 
- Enjoy Our Codes For Free always.
-======================================*/
-
+/*!
+ *@name     jquery.barrager.js
+ *@version  1.1
+ *@author   yaseng@uauc.net
+ *@url      https://github.com/yaseng/jquery.barrager.js
+ */
 (function ($) {
-    "use strict";
 
-    var mainApp = {
+	$.fn.barrager = function (barrage) {
+		barrage = $.extend({
+			close: true,
+			bottom: 0,
+			max: 10,
+			speed: 8,
+			color: '#fff',
+			old_ie_color: '#000000'
+		}, barrage || {});
 
-        main_fun: function main_fun() {
+		var time = new Date().getTime();
+		var barrager_id = 'barrage_' + time;
+		var id = '#' + barrager_id;
+		var div_barrager = $("<div class='barrage' id='" + barrager_id + "'></div>").appendTo($(this));
+		var window_height = $(window).height() - 100;
+		var this_height = window_height > this.height() ? this.height() : window_height;
+		var window_width = $(window).width() + 500;
+		var this_width = window_width > this.width() ? this.width() : window_width;
+		var bottom = barrage.bottom == 0 ? Math.floor(Math.random() * this_height + 40) : barrage.bottom;
+		div_barrager.css("bottom", bottom + "px");
+		div_barrager_box = $("<div class='barrage_box cl'></div>").appendTo(div_barrager);
+		if (barrage.img) {
 
-            var count = new countUp("error-link", 10, 404, 0, 5); //CHANGE 404 TO THE ERROR VALUE AS YOU WANT
+			div_barrager_box.append("<a class='portrait z' href='javascript:;'></a>");
+			var img = $("<img src='' >").appendTo(id + " .barrage_box .portrait");
+			img.attr('src', barrage.img);
+		}
+		div_barrager_box.append(" <div class='z p'></div>");
+		if (barrage.close) {
 
-            window.onload = function () {
-                count.start();
-            };
+			div_barrager_box.append(" <div class='close z'></div>");
+		}
 
-            /*====================================
-            WRITE YOUR SCRIPTS HERE
-            ======================================*/
-        },
+		var content = $("<a title='' href='' target='_blank'></a>").appendTo(id + " .barrage_box .p");
+		content.attr({
+			'href': barrage.href,
+			'id': barrage.id
+		}).empty().append(barrage.info);
+		if (navigator.userAgent.indexOf("MSIE 6.0") > 0 || navigator.userAgent.indexOf("MSIE 7.0") > 0 || navigator.userAgent.indexOf("MSIE 8.0") > 0) {
 
-        initialization: function initialization() {
-            mainApp.main_fun();
-        }
-        // Initializing ///
+			content.css('color', barrage.old_ie_color);
+		} else {
 
-    };$(document).ready(function () {
-        mainApp.main_fun();
-    });
+			content.css('color', barrage.color);
+		}
+
+		var i = 0;
+		div_barrager.css('margin-right', 0);
+
+		$(id).animate({ right: this_width }, barrage.speed * 1000, function () {
+
+			$(id).remove();
+		});
+
+		div_barrager_box.mouseover(function () {
+			$(id).stop(true);
+		});
+
+		div_barrager_box.mouseout(function () {
+
+			$(id).animate({ right: this_width }, barrage.speed * 1000, function () {
+
+				$(id).remove();
+			});
+		});
+
+		$(id + '.barrage .barrage_box .close').click(function () {
+
+			$(id).remove();
+		});
+	};
+
+	$.fn.barrager.removeAll = function () {
+
+		$('.barrage').remove();
+	};
 })(jQuery);
 
 /***/ })

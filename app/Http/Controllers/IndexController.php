@@ -20,7 +20,7 @@ class IndexController extends Controller
 
     public function index()
     {
-        for ($i=1; $i < 42; $i++) { 
+        for ($i=1; $i < 15; $i++) { 
             $images[] = "1 ({$i})" .'.jpg';
         }
         return view('welcome', ['images' => $images]);
