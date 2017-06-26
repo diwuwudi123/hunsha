@@ -72,7 +72,7 @@
     <div class="swiper-container">
         <div class="swiper-wrapper">
             @foreach ($images as $image)
-                <div class="swiper-slide"><!-- <img data-src="http://wudihunsha.oss-cn-qingdao.aliyuncs.com/{{ $image }}" class="swiper-lazy"> -->123</div>
+                <div class="swiper-slide"><img data-src="http://wudihunsha.oss-cn-qingdao.aliyuncs.com/{{ $image }}" class="swiper-lazy"></div>
             @endforeach
         </div>
         <!-- Add Pagination -->
@@ -100,7 +100,7 @@
             t = 0;
             counttime();
             var item={
-               img:'/images/haha.png', //图片 
+               img:'/images/haha.gif', //图片 
                info:'武迪超级帅帅帅', //文字 
                close:true, //显示关闭按钮 
                speed:6, //延迟,单位秒,默认6 
