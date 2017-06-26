@@ -53,6 +53,7 @@
     img {
         max-height: 80%;
         width: auto;
+        max-width: 100%;
     }
     #danmu {
         position: absolute;
