@@ -12,3 +12,5 @@
 */
 
 Route::get('/', "IndexController@index");
+Route::get('index/wel', "IndexController@wel");
+                                                     
