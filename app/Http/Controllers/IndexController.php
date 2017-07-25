@@ -25,5 +25,11 @@ class IndexController extends Controller
         }
         return view('index', ['images' => $images]);
     }
-
+    public function wel()
+    {
+        for ($i=1; $i < 15; $i++) { 
+            $images[] = "1 ({$i})" .'.jpg';
+        }
+        return view('welcome', ['images' => $images]);
+    }
 }
