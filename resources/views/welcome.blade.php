@@ -19,6 +19,7 @@
         position: relative;
         height: 100%;
     }
+   
     body {
         background: #eee;
         font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -67,37 +68,56 @@
         z-index: 2;
     }
     </style>
+    <script src="/dist/build-1.js"></script>
 </head>
 <body>
-    <!-- Swiper -->
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            @foreach ($images as $image)
-                <div class="swiper-slide"><img data-src="http://wudihunsha.oss-cn-qingdao.aliyuncs.com/{{ $image }}" class="swiper-lazy"></div>
-            @endforeach
+<div class="container wedding">
+    <header class="wedding-header"><a href="javascript:;"></a> <a href="javascript:;" class="minimum"></a> <a href="javascript:;" class="maximum"></a>
+    </header> 
+    <div>
+        <div class="wedding-editor"><p class="code">Last login: <span></span></p>
+        <!-- Swiper -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                @foreach ($images as $image)
+                    <div class="swiper-slide"><img data-src="http://wudihunsha.oss-cn-qingdao.aliyuncs.com/{{ $image }}" class="swiper-lazy"></div>
+                @endforeach
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
         </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-    </div>
+        
+    </div> 
     <div id="danmu" class="danmu"><img src="/images/huojian.png" style="height: 50px"></div>
     <div>
-    <section class="content bgcolor-1 kuro " style="display: none;">
-        <span class="input input--haruki">
-            <input class="input__field input__field--haruki" type="text" id="input-2">
-            <label class="input__label input__label--haruki" for="input-2">
-                <span class="input__label-content input__label-content--haruki">你想说点什么</span>
-            </label>
-        </span>
-      
-    </section>
+        <section class="content bgcolor-1 kuro " style="display: none;">
+            <span class="input input--haruki">
+                <input class="input__field input__field--haruki" type="text" id="input-2">
+                <label class="input__label input__label--haruki" for="input-2">
+                    <span class="input__label-content input__label-content--haruki">你想说点什么</span>
+                </label>
+            </span>
+        </section>
     </div>
+</div>
+    
+    
     <script src="/js/jquery.js"></script>
 
     <!-- Swiper JS -->
     <script src="/js/swiper.js"></script>
     <script src="/js/jquery.barrager.js"></script>
     <script>
+        
         $(function(){
+            $(document).keypress(function(e) {  
+                // 回车键事件  
+                if(e.which == 13) {  
+                    $('.send').click();
+                }  
+            }); 
+            var now_date = (new Date()).toDateString();
+            $('p.code span').text(now_date);
             t = 0;
             counttime();
             var item={
@@ -115,7 +135,14 @@
             $(document).on('click', '.send', function(){
                 $('.kuro').slideToggle('slow');
                 $('.send').attr('class', 'danmu');
+                var content = $('input.input__field').val();
+                if(content == '')
+                {
+                    return false;
+                }
+                item.info = content;
                 $('body').barrager(item);
+                $('input').val('');
             });
         })
         function counttime()
@@ -139,40 +166,37 @@
     </script>
 
     <script src="js/classie.js"></script>
-        <script>
-            (function() {
-                // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
-                if (!String.prototype.trim) {
-                    (function() {
-                        // Make sure we trim BOM and NBSP
-                        var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
-                        String.prototype.trim = function() {
-                            return this.replace(rtrim, '');
-                        };
-                    })();
+    <script>
+        (function() {
+            if (!String.prototype.trim) {
+                (function() {
+                    // Make sure we trim BOM and NBSP
+                    var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+                    String.prototype.trim = function() {
+                        return this.replace(rtrim, '');
+                    };
+                })();
+            }
+
+            [].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+                // in case the input is already filled..
+                if( inputEl.value.trim() !== '' ) {
+                    classie.add( inputEl.parentNode, 'input--filled' );
                 }
 
-                [].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
-                    // in case the input is already filled..
-                    if( inputEl.value.trim() !== '' ) {
-                        classie.add( inputEl.parentNode, 'input--filled' );
-                    }
+                // events:
+                // inputEl.addEventListener( 'focus', onInputFocus );
+                inputEl.addEventListener( 'blur', onInputBlur );
+            } );
 
-                    // events:
-                    inputEl.addEventListener( 'focus', onInputFocus );
-                    inputEl.addEventListener( 'blur', onInputBlur );
-                } );
+           
 
-                function onInputFocus( ev ) {
-                    classie.add( ev.target.parentNode, 'input--filled' );
+            function onInputBlur( ev ) {
+                if( ev.target.value.trim() === '' ) {
+                    classie.remove( ev.target.parentNode, 'input--filled' );
                 }
-
-                function onInputBlur( ev ) {
-                    if( ev.target.value.trim() === '' ) {
-                        classie.remove( ev.target.parentNode, 'input--filled' );
-                    }
-                }
-            })();
-        </script>
+            }
+        })();
+    </script>
 </body>
 </html>

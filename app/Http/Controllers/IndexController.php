@@ -23,7 +23,7 @@ class IndexController extends Controller
         for ($i=1; $i < 15; $i++) { 
             $images[] = "1 ({$i})" .'.jpg';
         }
-        return view('index', ['images' => $images]);
+        return view('welcome', ['images' => $images]);
     }
     public function wel()
     {
