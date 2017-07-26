@@ -21,14 +21,14 @@ class IndexController extends Controller
     public function index()
     {
         for ($i=1; $i < 15; $i++) { 
-            $images[] = "1 ({$i})" .'.jpg';
+            $images[] = "1 ({$i})".'.jpg';
         }
         return view('welcome', ['images' => $images]);
     }
     public function wel()
     {
         for ($i=1; $i < 15; $i++) { 
-            $images[] = "1 ({$i})" .'.jpg';
+            $images[] = "1 ({$i})".'.jpg';
         }
         return view('welcome', ['images' => $images]);
     }
