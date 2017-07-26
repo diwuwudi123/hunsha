@@ -7,17 +7,13 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function __constract()
+    public function __construct()
     {
-        $this->response = new Response;
-    }
-    public function response_json($content, $status = 200)
-    {
-        return $this->response()->json($content);
     }
 }

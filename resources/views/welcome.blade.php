@@ -7,6 +7,7 @@
 
     <title>武迪和白贺丽</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="/css/swiper.css">
@@ -112,6 +113,11 @@
         $(function(){
             t = 0;
             counttime();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
             $(document).keypress(function(e) {  
                 // 回车键事件  
                 if(e.which == 13) {  
@@ -122,7 +128,6 @@
             $('p.code span').text(now_date);
             
             var item={
-               img:'/images/avatar/', //图片 
                info:'', //文字 
                close:true, //显示关闭按钮 
                speed:6, //延迟,单位秒,默认6 
@@ -141,10 +146,12 @@
                 {
                     return false;
                 }
-                var sex   = Math.floor(Math.random()*2) == 1 ? 'nan_' : 'nv_';
+                if (item.img== null ){
+                    var sex   = Math.floor(Math.random()*2) == 1 ? 'nan_' : 'nv_';
 
-                var avatar= sex + Math.floor(Math.random()*4) + '.jpg';
-                item.img += avatar;
+                    var avatar= sex + Math.floor(Math.random()*4) + '.jpg';
+                    item.img = '/images/avatar/' + avatar;
+                }
                 item.info = content;
                 $('body').barrager(item);
                 $('input').val('');
@@ -181,7 +188,7 @@
     });
     </script>
 
-    <script src="js/classie.js"></script>
+    <script src="/js/classie.js"></script>
     <script>
         (function() {
             if (!String.prototype.trim) {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class IndexController extends Controller
 {
@@ -17,7 +18,6 @@ class IndexController extends Controller
      */
     public function __construct()
     {
-        $this->request = new Request;
     }
 
     public function index()
@@ -37,9 +37,5 @@ class IndexController extends Controller
 
     public function push_comment()
     {
-        $img = $this->request->input('img');
-        $info= $this->request->input('info');
-        $arr = [$img, $info];
-        $this->response_json($arr);
     }
 }
