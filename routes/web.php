@@ -13,4 +13,5 @@
 
 Route::get('/', "IndexController@index");
 Route::get('index/wel', "IndexController@wel");
+Route::get('index/push_comment', "IndexController@push_comment");
                                                      

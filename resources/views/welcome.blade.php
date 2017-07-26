@@ -51,7 +51,7 @@
         -webkit-align-items: center;
         align-items: center;
     }
-    img {
+    .wedding .img {
         max-height: 80%;
         width: auto;
         max-width: 100%;
@@ -110,6 +110,8 @@
     <script>
         
         $(function(){
+            t = 0;
+            counttime();
             $(document).keypress(function(e) {  
                 // 回车键事件  
                 if(e.which == 13) {  
@@ -118,11 +120,10 @@
             }); 
             var now_date = (new Date()).toDateString();
             $('p.code span').text(now_date);
-            t = 0;
-            counttime();
+            
             var item={
-               img:'/images/haha.gif', //图片 
-               info:'武迪超级帅帅帅', //文字 
+               img:'/images/avatar/', //图片 
+               info:'', //文字 
                close:true, //显示关闭按钮 
                speed:6, //延迟,单位秒,默认6 
                color:'#fff', //颜色,默认白色 
@@ -140,15 +141,30 @@
                 {
                     return false;
                 }
+                var sex   = Math.floor(Math.random()*2) == 1 ? 'nan_' : 'nv_';
+
+                var avatar= sex + Math.floor(Math.random()*4) + '.jpg';
+                item.img += avatar;
                 item.info = content;
                 $('body').barrager(item);
                 $('input').val('');
+                send_to_server(item, t);
             });
         })
+
+        
         function counttime()
         {
             t += 1;
             setTimeout('counttime()', 1000);
+        }
+
+        function send_to_server(item, t)
+        {
+            var data = {img : item.img, info : item.info};
+            $.post('/index/push_comment', data = data, function(){
+
+            });
         }
     </script>
     <!-- Initialize Swiper -->
