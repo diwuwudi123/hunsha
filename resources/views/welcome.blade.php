@@ -10,9 +10,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="/css/swiper.css">
-    <link rel="stylesheet" href="/css/component.css">
-    <link rel="stylesheet" href="/css/barrager.css">
+    <link rel="stylesheet" href="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public/css/swiper.css">
+    <link rel="stylesheet" href="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public/css/component.css">
+    <link rel="stylesheet" href="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public/css/barrager.css">
 
     <!-- Demo styles -->
     <style>
@@ -69,7 +69,7 @@
         z-index: 2;
     }
     </style>
-    <script src="/dist/build-1.js"></script>
+    <script src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public/dist/build-1.js"></script>
 </head>
 <body>
 <div class="container wedding">
@@ -89,7 +89,7 @@
         </div>
         
     </div> 
-    <div id="danmu" class="danmu"><img src="/images/huojian.png" style="height: 50px"></div>
+    <div id="danmu" class="danmu"><img src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public/images/huojian.png" style="height: 50px"></div>
     <div>
         <section class="content bgcolor-1 kuro " style="display: none;">
             <span class="input input--haruki">
@@ -103,11 +103,11 @@
 </div>
     
     
-    <script src="/js/jquery.js"></script>
+    <script src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public/js/jquery.js"></script>
 
     <!-- Swiper JS -->
-    <script src="/js/swiper.js"></script>
-    <script src="/js/jquery.barrager.js"></script>
+    <script src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public/js/swiper.js"></script>
+    <script src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public/js/jquery.barrager.js"></script>
     <script>
         
         $(function(){
@@ -118,6 +118,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+            get_comment();
             $(document).keypress(function(e) {  
                 // 回车键事件  
                 if(e.which == 13) {  
@@ -149,26 +150,39 @@
                 if (item.img== null ){
                     var sex   = Math.floor(Math.random()*2) == 1 ? 'nan_' : 'nv_';
 
-                    var avatar= sex + Math.floor(Math.random()*4) + '.jpg';
-                    item.img = '/images/avatar/' + avatar;
+                    avatar= '/images/avatar/' + sex + Math.floor(Math.random()*4) + '.jpg';
+                    item.img = 'http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public' + avatar;
                 }
                 item.info = content;
                 $('body').barrager(item);
                 $('input').val('');
-                send_to_server(item, t);
+                send_to_server(item, t, avatar);
             });
         })
-
-        
+        function send_barrager(item)
+        {
+            $('body').barrager(item);
+        }
+        function get_comment()
+        {
+            var data = {time:t};
+            $.post('/index/get_comment', data = data, function(data){
+                $.each(data.data, function(idx, obj){
+                    var item = {img:'http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public'+obj.img, info:obj.comment,close:true,speed:6,color:'#fff'};
+                    setTimeout(function(){send_barrager(item)}, (obj.time - t) *1000, item);
+                })
+            });
+            setTimeout('get_comment()', 30000);
+        } 
         function counttime()
         {
             t += 1;
             setTimeout('counttime()', 1000);
         }
 
-        function send_to_server(item, t)
+        function send_to_server(item, t, avatar)
         {
-            var data = {img : item.img, info : item.info};
+            var data = {img : avatar, info : item.info, time:t};
             $.post('/index/push_comment', data = data, function(){
 
             });
@@ -188,7 +202,7 @@
     });
     </script>
 
-    <script src="/js/classie.js"></script>
+    <script src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public/js/classie.js"></script>
     <script>
         (function() {
             if (!String.prototype.trim) {

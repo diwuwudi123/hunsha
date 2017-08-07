@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>Mr.Wu & Miss.Bai</title>
     <link rel="stylesheet" href="/css/swiper.css">
-    <script src="/js/swiper.js"></script>
+    <script src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public/js/swiper.js"></script>
   <style>
    .swiper-container {
         width: 100%;
@@ -41,11 +41,11 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div id="wedding"></div>
-                <script src="/dist/build.js"></script>
+                <script src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public/dist/build.js"></script>
             </div>
             <div class="swiper-slide">
 
-                    <iframe src="http://127.0.0.1:81/index/wel"></iframe>
+                    <iframe src="http://hunsha.72ker.com/index/wel" frameborder=0></iframe>
             </div>
         </div>
    </div>
