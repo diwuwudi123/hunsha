@@ -31,8 +31,8 @@ class IndexController extends Controller
     }
     public function wel()
     {
-        for ($i=1; $i < 15; $i++) { 
-            $images[] = "1 ({$i})".'.jpg';
+        for ($i=0; $i < 22; $i++) { 
+            $images[] = "{$i}".'.jpg?x-oss-process=style/mobile_photo';
         }
         return view('welcome', ['images' => $images]);
     }
@@ -60,4 +60,36 @@ class IndexController extends Controller
         $comment->save();
         return $this->data;
     }
+
+    public function push_status(Request $request)
+    {
+        $this->validate($request, [
+            'name'  => 'required|max:20',
+            'mobile'    => 'required|max:20',
+            'status'    => 'required|in:0,1',
+        ]);
+
+        $status = new Status;
+        $status->name   = Input::get('name');
+        $status->mobile = Input::get('mobile');
+        $status->status = Input::get('status');
+
+        $comment->save();
+        return $this->data;
+    }
+
+    public function get_status()
+    {
+        $status = new Status;
+
+        $status = \App\Status::orderBy('id','desc')->get();
+        $this->data['data'] = $status;
+        return $this->data;
+    }
+
+    public function get_hello()
+    {
+        return ['message' => 'helloword'];
+    }
+
 }
