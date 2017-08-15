@@ -75,12 +75,12 @@
         setTimeout('listen()', '100');
         function listen(){
             if (window.t == true){
-                
-                var audio = new Audio();                
-                audio.src = 'http://wudihunsha.oss-cn-shanghai.aliyuncs.com/ctl.mp3';　　　　　　　　　　
-                audio.preload="metadata";           
-                audio.load();　　　　　　　　　　　　　　　
-                audio.play();
+                audioAutoPlay('music-audio');
+                window.aud = new Audio();                
+                aud.src = 'http://wudihunsha.oss-cn-shanghai.aliyuncs.com/ctl.mp3';　　　　　　　　　　
+                aud.preload="metadata";           
+                aud.load();　　　　　　　　　　　　　　　
+                aud.play();
 
             } else {
                 setTimeout('listen()', '100');
@@ -89,7 +89,16 @@
         $(function(){
             
             $('#music').click(function(){
-                audioAutoPlay('music-audio');
+                if (window.t == false){
+                    audioAutoPlay('music-audio');
+                } else {
+                    if (aud.paused){
+                        aud.play();
+                    } else {
+                        aud.pause();
+                    }
+                }
+                
                 $(this).toggleClass('stopped')
             })
         });
