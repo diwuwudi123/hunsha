@@ -73,15 +73,14 @@
         }
         audioAutoPlay('music-audio');
         setTimeout('listen()', '100');
+        window.aud = new Audio();                
+        aud.src = 'http://wudihunsha.oss-cn-shanghai.aliyuncs.com/ctl.mp3';　　　　　　　　　　
+        aud.preload="metadata";           
+        aud.load();　　　　　　　　
         function listen(){
             if (window.t == true){
                 audioAutoPlay('music-audio');
-                window.aud = new Audio();                
-                aud.src = 'http://wudihunsha.oss-cn-shanghai.aliyuncs.com/ctl.mp3';　　　　　　　　　　
-                aud.preload="metadata";           
-                aud.load();　　　　　　　　　　　　　　　
                 aud.play();
-
             } else {
                 setTimeout('listen()', '100');
             }
