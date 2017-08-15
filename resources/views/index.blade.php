@@ -40,7 +40,6 @@
     <body>
     <div id="music" class="music">		
         <audio id="music-audio" class="audio" src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/jianpan.mp3" loop="" autoplay="autoplay" preload="auto">		</audio>		
-        <audio id="music-163" class="audio" src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/ctl.mp3" loop="" autoplay="autoplay" preload="auto">		</audio>		
         <div class="control"><div class="control-after"></div></div>	
     </div>
     <div class="swiper-container">
@@ -73,13 +72,18 @@
             }
         }
         audioAutoPlay('music-audio');
-        setInterval('listen()', '100');
+        setTimeout('listen()', '100');
         function listen(){
             if (window.t == true){
-                //暂停键盘声音
-                document.getElementById('music-audio').pause();
-                //开始播放音乐
-                audioAutoPlay('music-163');
+                
+                var audio = new Audio();                
+                audio.src = 'http://wudihunsha.oss-cn-shanghai.aliyuncs.com/ctl.mp3';　　　　　　　　　　
+                audio.preload="metadata";           
+                audio.load();　　　　　　　　　　　　　　　
+                audio.play();
+
+            } else {
+                setTimeout('listen()', '100');
             }
         }
         $(function(){
