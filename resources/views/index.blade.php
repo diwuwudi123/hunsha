@@ -40,14 +40,14 @@
     <body>
     <div id="music" class="music">		
         <audio id="music-audio" class="audio" src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/jianpan.mp3" loop="" autoplay="autoplay" preload="auto">		</audio>		
-        <audio id="music-audio" class="audio" src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/ctl.mp3" loop="" preload="auto">		</audio>		
+        <audio id="music-163" class="audio" src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/ctl.mp3" loop="" preload="auto">		</audio>		
         <div class="control"><div class="control-after"></div></div>	
     </div>
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div id="wedding"></div>
-                <script src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public/dist/build.js"></script>
+                <script src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public/dist/build_2.js"></script>
             </div>
             <div class="swiper-slide">
 
@@ -73,6 +73,15 @@
             }
         }
         audioAutoPlay('music-audio');
+        setInterval('listen()', '100');
+        function listen(){
+            if (window.t == true){
+                //暂停键盘声音
+                document.getElementById('music-audio').pause();
+                //开始播放音乐
+                audioAutoPlay('music-163');
+            }
+        }
         $(function(){
             
             $('#music').click(function(){
