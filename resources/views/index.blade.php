@@ -81,6 +81,9 @@
             if (window.t == true){
                 audioAutoPlay('music-audio');
                 aud.play();
+                document.addEventListener("WeixinJSBridgeReady", function () {
+                    aud.play();
+                }, false);
             } else {
                 setTimeout('listen()', '100');
             }
