@@ -39,8 +39,9 @@
   
     <body>
     <div id="music" class="music">		
-    <audio id="music-audio" class="audio" src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/jianpan.mp3" loop="" autoplay="autoplay" preload="auto">		</audio>		
-    <div class="control"><div class="control-after"></div></div>	
+        <audio id="music-audio" class="audio" src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/jianpan.mp3" loop="" autoplay="autoplay" preload="auto">		</audio>		
+        <audio id="music-audio" class="audio" src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/ctl.mp3" loop="" preload="auto">		</audio>		
+        <div class="control"><div class="control-after"></div></div>	
     </div>
     <div class="swiper-container">
         <div class="swiper-wrapper">
@@ -58,18 +59,24 @@
     <script>
         function audioAutoPlay(id){
             var audio = document.getElementById(id);
-            audio.play();
-            document.addEventListener("WeixinJSBridgeReady", function () {
+            if(audio.paused){
                 audio.play();
-            }, false);
-            document.addEventListener('YixinJSBridgeReady', function() {
-                audio.play();
-            }, false);
+                document.addEventListener("WeixinJSBridgeReady", function () {
+                    audio.play();
+                }, false);
+                document.addEventListener('YixinJSBridgeReady', function() {
+                    audio.play();
+                }, false);
+            } else {
+                //暂停播放
+                audio.pause();
+            }
         }
         audioAutoPlay('music-audio');
         $(function(){
             
             $('#music').click(function(){
+                audioAutoPlay('music-audio');
                 $(this).toggleClass('stopped')
             })
         });
