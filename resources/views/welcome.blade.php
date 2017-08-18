@@ -14,11 +14,6 @@
     <link rel="stylesheet" href="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public/css/component.css">
     <link rel="stylesheet" href="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public/css/barrager.css">
 
-    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> 
     
     <style>
     html, body {
@@ -88,27 +83,6 @@
                 @foreach ($images as $image)
                     <div class="swiper-slide"><img data-src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/hunsha/{{ $image }}" class="swiper-lazy"></div>
                 @endforeach
-                    <div class="swiper-slide">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label"></label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="name" placeholder="宾客姓名">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="mobile" class="col-sm-2 control-label"></label>
-                            <div class="col-sm-10">
-                                <input type="number" class="form-control" id="mobile" placeholder="联系方式">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">确定参加</button>
-                            </div>
-                        </div>
-                    </form>
-                    </div>
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
