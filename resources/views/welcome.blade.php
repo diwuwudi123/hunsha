@@ -52,7 +52,7 @@
         -webkit-align-items: center;
         align-items: center;
     }
-    .wedding .img {
+    img {
         max-height: 80%;
         width: auto;
         max-width: 100%;
@@ -69,10 +69,112 @@
         z-index: 2;
     }
     </style>
-    <script src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public/dist/build-1.js"></script>
+<style>
+    body,
+    html {
+        height: 100%
+    }
+    
+    .container {
+        width: 100%!important
+    }
+    
+    .wedding {
+        max-width: 568px!important;
+        min-height: 100%;
+    }
+    
+    .wedding,
+    .wedding .wedding-header {
+        position: relative;
+        background: #FFF
+    }
+    
+    .wedding .wedding-header {
+        z-index: 3;
+        margin: 0 -15px;
+        padding: 12px;
+        overflow: hidden
+    }
+    
+    .wedding .wedding-header>a {
+        float: left;
+        display: block;
+        width: 16px;
+        height: 16px;
+        margin-right: 5px;
+        border-radius: 8px;
+        background: #fc615d
+    }
+    
+    .wedding .wedding-header>a.minimum {
+        background: #fdbc40
+    }
+    
+    .wedding .wedding-header>a.maximum {
+        background: #34c84a
+    }
+    
+    .wedding .wedding-editor {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 15px;
+        padding-top: 50px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        z-index: 1;
+        transform-origin: 0 0;
+        -webkit-transform-origin: 0 0;
+        transition: all 1.6s cubic-bezier(.4, 0, 1, 1);
+        -webkit-transition: all 1.6s cubic-bezier(.4, 0, 1, 1)
+    }
+    
+    .wedding .wedding-editor pre {
+        margin: 0;
+        margin-top: -25px;
+        white-space: pre-wrap
+    }
+    
+    .wedding .wedding-editor pre code {
+        white-space: pre-wrap;
+        word-break: break-all;
+        background: transparent
+    }
+    
+    .wedding .wedding-editor p.code,
+    .wedding .wedding-editor pre code {
+        font-size: 16px!important;
+        margin: 0;
+        color: #bbb;
+        line-height: 1.2;
+        font-family: Roboto Mono, Menlo, Monaco, Courier, monospace!important;
+        font-weight: 500!important
+    }
+    
+    .wedding .wedding-editor p.code .addon {
+        color: #68fcfb
+    }
+    
+    .wedding .wedding-editor p.code .time {
+        color: #666
+    }
+    
+    .wedding .wedding-editor p.code .task {
+        color: #009ab2
+    }
+    
+    .wedding .wedding-editor p.code .duration {
+        color: #bf36b7
+    }
+    
+    
+</style>
 </head>
 <body>
-<div class="container wedding">
+<div class="wedding container">
     <header class="wedding-header"><a href="javascript:;"></a> <a href="javascript:;" class="minimum"></a> <a href="javascript:;" class="maximum"></a>
     </header> 
     <div>
