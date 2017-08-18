@@ -46,7 +46,7 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div id="wedding"></div>
-                <script src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public/dist/build_2.js"></script>
+                <script src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/public/dist/build_3.js"></script>
             </div>
             <div class="swiper-slide">
 

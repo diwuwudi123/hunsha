@@ -38,7 +38,6 @@ body {
 }
 
 img {
-    max-height: 80%;
     width: auto;
     max-width: 100%;
 }
@@ -78,7 +77,6 @@ html {
 
 .wedding .wedding-header {
     z-index: 3;
-    margin: 0 -15px;
     padding: 12px;
     overflow: hidden
 }
