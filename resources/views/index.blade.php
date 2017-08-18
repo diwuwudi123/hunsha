@@ -39,7 +39,7 @@
   
     <body>
     <div id="music" class="music">		
-        <audio id="music-audio" class="audio" src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/jianpan.mp3" loop="" autoplay="autoplay" preload="auto">		</audio>		
+        <audio id="music-audio" class="audio" src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/j.mp3" loop="" autoplay="autoplay" preload="auto">		</audio>		
         <div class="control"><div class="control-after"></div></div>	
     </div>
     <div class="swiper-container">

@@ -28,7 +28,7 @@
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 @foreach ($images as $image)
-                    <div class="swiper-slide"><img data-src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/hunsha/{{ $image }}" class="swiper-lazy"></div>
+                    <div class="swiper-slide"><img data-src="http://wudihunsha.oss-cn-shanghai.aliyuncs.com/hunsha2/{{ $image }}" class="swiper-lazy"></div>
                 @endforeach
             </div>
             <!-- Add Pagination -->
