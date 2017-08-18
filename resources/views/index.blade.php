@@ -108,7 +108,6 @@
             paginationClickable: true,
             centeredSlides: true,
             slidesPerView: 'auto',
-            effect: 'coverflow',
             lazyLoading : true,
             lazyLoadingInPrevNext : true,
             lazyLoadingInPrevNextAmount : 2,
